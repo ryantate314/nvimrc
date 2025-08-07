@@ -166,7 +166,10 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Enable code block folding by indentation
 vim.o.foldmethod = 'indent'
+-- Start with all blocks unfolded.
+vim.o.foldlevelstart = 99
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -484,6 +487,15 @@ require('lazy').setup({
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
     end,
+  },
+
+  {
+    'f-person/git-blame.nvim',
+    event = 'VeryLazy',
+    opts = {
+      delay = 750,
+      date_format = '%r %Y-%m-%d',
+    },
   },
 
   -- LSP Plugins
